@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require('lodash');
+const dotenv = require('dotenv');
+const PORT = process.env.PORT || 3000;
+dotenv.config();
 //const date = require(__dirname + "/date.js");
 
 const app = express();
@@ -12,7 +15,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
-const uri = "mongodb+srv://admin-Abhishek:Test123@cluster0.g7znb89.mongodb.net/";
+const uri = process.env.MONGO_URI;
 
 //Connection
 mongoose.connect(uri + "todolistDB" , {useNewUrlParser: true});
@@ -151,6 +154,6 @@ app.post("/delete" , function(req,res){
 });
 
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log("Server is running on port 3000");
 });
