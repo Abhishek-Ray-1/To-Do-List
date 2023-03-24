@@ -120,14 +120,6 @@ app.post("/", function (req, res) {
       res.redirect("/" + listName);
     });
   }
-
-  // if (req.body.list === "Work") {
-  //   workItems.push(item);
-  //   res.redirect("/work");
-  // } else {
-  //   items.push(item);
-  //   res.redirect("/");
-  // }
 });
 
 app.post("/delete" , function(req,res){
